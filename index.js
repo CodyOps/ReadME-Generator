@@ -2,6 +2,7 @@
 const inquirer = require("inquirer");
 const fs = "fs";
 const util = require("util");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 const promptUser = () =>
   inquirer.prompt([
@@ -43,7 +44,8 @@ const promptUser = () =>
     {
       type: "input",
       name: "name",
-      message: "What are the test instructions?",
+      message:
+        "If applicable, provide any tests written for your application and provide examples on how to run them.",
     },
     {
       type: "input",
@@ -68,7 +70,17 @@ const promptUser = () =>
     {
       type: "input",
       name: "name",
-      message: "What is your license for this application?",
+      message: "Do you have a license for your project?",
+      choices: [
+        "GNU AGPLv3",
+        "GNU GPLv3",
+        "GNU LGPLv3",
+        "Mozilla Public License 2.0",
+        "Apache License 2.0",
+        "MIT License",
+        "Boost Software License 1.0",
+        "The Unlicense",
+      ],
     },
     {
       type: "input",
