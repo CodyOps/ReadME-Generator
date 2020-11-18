@@ -93,3 +93,13 @@ const promptUser = () =>
       message: "What is your email address?",
     },
   ]);
+
+function writeFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("Success! Your README.md file has been generated");
+  });
+}
