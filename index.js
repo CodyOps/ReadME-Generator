@@ -100,6 +100,15 @@ function writeFile(fileName, data) {
       return console.log(err);
     }
 
-    console.log("Success! Your README.md file has been generated");
+    console.log(
+      "Success! You have successfully generated your professional README.md file!"
+    );
   });
+}
+
+async function init() {
+  try {
+  } catch (error) {
+    console.log(error);
+  }
 }
