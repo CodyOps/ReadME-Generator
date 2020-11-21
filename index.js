@@ -1,6 +1,6 @@
 //NPM Packages
 const inquirer = require("inquirer");
-const fs = "fs";
+const fs = require("fs");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
 const generateMarkdown = require("./utils/generateMarkdown.js");
@@ -25,27 +25,27 @@ const promptUser = () =>
     },
     {
       type: "input",
-      name: "name",
+      name: "table",
       message: "What is this list for the table of contents?",
     },
     {
       type: "input",
-      name: "name",
+      name: "instructions",
       message: "What are the installation instructions?",
     },
     {
       type: "input",
-      name: "name",
+      name: "usage",
       message: "What is the usage information?",
     },
     {
       type: "input",
-      name: "name",
+      name: "contribution",
       message: "What are the contribution guidelines of this project?",
     },
     {
       type: "input",
-      name: "name",
+      name: "tests",
       message:
         "If applicable, provide any tests written for your application and provide examples on how to run them.",
     },
@@ -71,7 +71,7 @@ const promptUser = () =>
     },
     {
       type: "input",
-      name: "name",
+      name: "license",
       message: "Do you have a license for your project?",
       choices: [
         "GNU AGPLv3",
@@ -86,12 +86,12 @@ const promptUser = () =>
     },
     {
       type: "input",
-      name: "name",
+      name: "github",
       message: "What is your GitHub username?",
     },
     {
       type: "input",
-      name: "name",
+      name: "email",
       message: "What is your email address?",
     },
   ]);
