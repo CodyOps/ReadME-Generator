@@ -3,6 +3,8 @@ const inquirer = require("inquirer");
 const fs = "fs";
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
+const generateMarkdown = require("./utils/generateMarkdown.js");
+const api = require("./utils/api.js");
 
 const promptUser = () =>
   inquirer.prompt([
@@ -108,7 +110,11 @@ function writeFile(fileName, data) {
 
 async function init() {
   try {
-    let userInput = await inquirer.prompt(questions);
+    let userInput = await promptUser();
+
+    let readme = Markdown(response);
+
+    await writeFileAsync("README.md", readMe);
     console.log(userInput);
     console.log(
       "Thank you for completing the questions! Reaching out to Github now..."
