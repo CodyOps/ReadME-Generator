@@ -108,6 +108,11 @@ function writeFile(fileName, data) {
 
 async function init() {
   try {
+    let userInput = await inquirer.prompt(questions);
+    console.log(userInput);
+    console.log(
+      "Thank you for completing the questions! Reaching out to Github now..."
+    );
   } catch (error) {
     console.log(error);
   }
