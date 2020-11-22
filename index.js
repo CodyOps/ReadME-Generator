@@ -3,8 +3,6 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
-const generateMarkdown = require("./utils/generateMarkdown.js");
-const api = require("./utils/api.js");
 
 const promptUser = () =>
   inquirer.prompt([
@@ -96,33 +94,55 @@ const promptUser = () =>
     },
   ]);
 
-function writeFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) => {
-    if (err) {
-      return console.log(err);
-    }
+// function writeFile(fileName, data) {
+//   fs.writeFile(fileName, data, (err) => {
+//     if (err) {
+//       return console.log(err);
+//     }
 
-    console.log(
-      "Success! You have successfully generated your professional README.md file!"
-    );
-  });
-}
+//     console.log(
+//       "Success! You have successfully generated your professional README.md file!"
+//     );
+//   });
+// }
 
-async function init() {
-  try {
-    let userInput = await promptUser();
+// async function init() {
+//   try {
+//     let userInput = await promptUser();
 
-    let readme = Markdown(response);
+//     let readme = Markdown(response);
 
-    await writeFileAsync("README.md", readMe);
-    console.log(userInput);
-    console.log(
-      "Thank you for completing the questions! Reaching out to Github now..."
-    );
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     await writeFileAsync("README.md", readMe);
+//     console.log(userInput);
+//     console.log(
+//       "Thank you for completing the questions! Reaching out to Github now..."
+//     );
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+const produceHTML = (responses) =>
+  `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Hi! My name is ${responses.name}</h1>
+    <p class="lead">Description: ${responses.description}.</p>
+    <p class="lead">User Story: ${responses.story}.</p>
+    <p class="lead">Table of Contents: ${responses.table}.</p>
+    <p class="lead">Installation Instructions: ${responses.instructions}.</p>
+  </div>
+</div>
+</body>
+</html>`;
 
 promptUser()
   .then((responses) => writeFileAsync("index.html", produceHTML(responses)))
