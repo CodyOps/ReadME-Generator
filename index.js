@@ -70,7 +70,7 @@ const promptUser = () =>
       message: "Please attach some links to screenshots of your application.",
     },
     {
-      type: "input",
+      type: "list",
       name: "license",
       message: "Do you have a license for your project?",
       choices: [
@@ -123,3 +123,8 @@ async function init() {
     console.log(error);
   }
 }
+
+promptUser()
+  .then((responses) => writeFileAsync("index.html", produceHTML(responses)))
+  .then(() => console.log("Successfully wrote to index.html"))
+  .catch((err) => console.error(err));
