@@ -4,54 +4,26 @@
   * [Title](#title)
   * [Description](#description)
   * [User Story](#story)
-  * [Installation](#installation)
-  * [Usage](#usage)
   * [Contribution](#contribution)
-  * [Tests](#tests)
-  * [Screenshots](#screenshots)
   * [License](#license)
 
   ## Project Title
   
-   readm
+   readme-generator
   
   
   ## Description
 
   *Quick description about this project* 
 
-  readme
+  This project helps the user to generate a professional readme.md file
   
   
   ## User Story
   
   *User Story for this Project:*
   
-  readm
-  
-  ## Installation
-  
-  *Steps required to install project:*
-  
-  readme
-  
-  ## Usage 
-  
-  *Instructions on how to use this project:*
-  
-  readm
-  
-  ## Tests
-  
-  *Tests for application and how to run them:*
-  
-  readme
-  
-  ## Screenshots
-  
-  *Images of this project:*
-  
-  readme
+  This project helps to save time generating a readme file
   
   ## License
 
