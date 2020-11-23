@@ -9,7 +9,7 @@ function generateMarkdown(responses) {
 
   if (responses.repository !== "") {
     table += `
-  **[Repository](#repository)**`;
+  *[Repository](#repository)`;
   }
 
   if (responses.title !== "") {
