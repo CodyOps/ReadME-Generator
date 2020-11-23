@@ -1,7 +1,9 @@
 // function to generate markdown for README
 function generateMarkdown(responses) {
+  //creates a table of contents with clickable text to the specific elements
   let table = `## Table of Contents`;
 
+  //if statement that if the user answers with text to add the specific response to the table of contents
   if (responses.username !== "") {
     table += `
   * [Username](#username)`;
@@ -56,6 +58,8 @@ function generateMarkdown(responses) {
   * [License](#license)`;
   }
 
+  //create a write markdown variable to store the users responses to add to the readme file
+  //if statement to not add any text if the user chooses to not add a specific description to a question
   let writeMarkdown = `
 
   ## Project Title
@@ -136,7 +140,9 @@ function generateMarkdown(responses) {
   ${responses.license}
   `;
 
+  //returns the table and markdown to be passed to the index.js functions to be appended to the readme file
   return table + writeMarkdown;
 }
 
+//export the file and functions to be used by the other JavaScript files
 module.exports = generateMarkdown;
