@@ -116,7 +116,7 @@ async function init() {
     // console.log("Your GitHub: ", userGithub);
 
     console.log("Generating your README file...");
-    const markdown = generateMarkdown(responses);
+    const markdown = generateMarkdown(userAnswers);
     console.log(markdown);
 
     await writeFileAsync("README.md", markdown);

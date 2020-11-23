@@ -75,6 +75,10 @@ function generateMarkdown(responses) {
 
   ${responses.license}
   `;
+
+  return table;
+
+  return writeMarkdown;
 }
 
 module.exports = generateMarkdown;
