@@ -4,6 +4,7 @@
   "description": "This command-line application dynamically generates a professional README.md file from the user's input using the Inquirer package.",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.0",
     "inquirer": "^7.3.3"
   },
   "devDependencies": {},

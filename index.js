@@ -3,12 +3,14 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 const writeFileAsync = util.promisify(fs.writeFile);
+const generateMarkdown = require("./generateMarkdown.js");
+const api = require("./api");
 
 const promptUser = () =>
   inquirer.prompt([
     {
       type: "input",
-      name: "name",
+      name: "title",
       message: "What is the title of your project?",
     },
     {
@@ -72,13 +74,13 @@ const promptUser = () =>
       name: "license",
       message: "Do you have a license for your project?",
       choices: [
+        "Apache License 2.0",
+        "Boost Software License 1.0",
         "GNU AGPLv3",
         "GNU GPLv3",
         "GNU LGPLv3",
-        "Mozilla Public License 2.0",
-        "Apache License 2.0",
         "MIT License",
-        "Boost Software License 1.0",
+        "Mozilla Public License 2.0",
         "The Unlicense",
       ],
     },
@@ -94,57 +96,33 @@ const promptUser = () =>
     },
   ]);
 
-// function writeFile(fileName, data) {
-//   fs.writeFile(fileName, data, (err) => {
-//     if (err) {
-//       return console.log(err);
-//     }
+function writeFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      return console.log(err);
+    }
+    console.log(
+      "Success! You have successfully generated your professional README.md file!"
+    );
+  });
+}
 
-//     console.log(
-//       "Success! You have successfully generated your professional README.md file!"
-//     );
-//   });
-// }
+async function init() {
+  try {
+    const userAnswers = await promptUser();
+    console.log("Your responses: ", userAnswers);
 
-// async function init() {
-//   try {
-//     let userInput = await promptUser();
+    // const userGithub = await api.getUser(responses);
+    // console.log("Your GitHub: ", userGithub);
 
-//     let readme = Markdown(response);
+    console.log("Generating your README file...");
+    const markdown = generateMarkdown(responses);
+    console.log(markdown);
 
-//     await writeFileAsync("README.md", readMe);
-//     console.log(userInput);
-//     console.log(
-//       "Thank you for completing the questions! Reaching out to Github now..."
-//     );
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+    await writeFileAsync("README.md", markdown);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-const produceHTML = (responses) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${responses.name}</h1>
-    <p class="lead">Description: ${responses.description}.</p>
-    <p class="lead">User Story: ${responses.story}.</p>
-    <p class="lead">Table of Contents: ${responses.table}.</p>
-    <p class="lead">Installation Instructions: ${responses.instructions}.</p>
-  </div>
-</div>
-</body>
-</html>`;
-
-promptUser()
-  .then((responses) => writeFileAsync("index.html", produceHTML(responses)))
-  .then(() => console.log("Successfully wrote to index.html"))
-  .catch((err) => console.error(err));
+init();
