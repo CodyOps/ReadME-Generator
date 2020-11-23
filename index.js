@@ -32,6 +32,7 @@ const promptUser = () =>
     {
       type: "input",
       name: "story",
+      default: "User Story",
       message: "What is the user story of this project?",
     },
     {

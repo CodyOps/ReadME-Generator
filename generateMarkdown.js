@@ -2,6 +2,35 @@
 function generateMarkdown(responses) {
   let table = `## Table of Contents`;
 
+  if (responses.username !== "") {
+    table += `
+  * [Username](#username)`;
+  }
+
+  if (responses.repository !== "") {
+    table += `
+  **[Repository](#repository)**`;
+  }
+
+  if (responses.title !== "") {
+    table += `
+  **[Title](#title)**`;
+  }
+
+  if (responses.description !== "") {
+    table += `
+  * [Description](#description)`;
+  }
+  if (responses.story !== "") {
+    table += `
+  * [User Story](#story)`;
+  }
+
+  if (responses.installation !== "") {
+    table += `
+  * [Installation](#installation)`;
+  }
+
   if (responses.usage !== "") {
     table += `
   * [Usage](#usage)`;
@@ -17,23 +46,44 @@ function generateMarkdown(responses) {
   * [Tests](#tests)`;
   }
 
+  if (responses.screenshots !== "") {
+    table += `
+  * [Screenshots](#screenshots)`;
+  }
+
+  if (responses.license !== "") {
+    table += `
+  * [License](#license)`;
+  }
+
   let writeMarkdown = `# ${responses.title}
   
   
+  ## Description
+
+  *Quick description about this project* 
+
   ${responses.description}
   `;
 
   writeMarkdown += table;
 
-  writeMarkdown += `
-  * [License](#license)`;
+  if (responses.story !== "") {
+    writeMarkdown += `
+  
+  ## User Story
+  
+  *User Story for this Project:*
+  
+  ${responses.story}`;
+  }
 
   if (responses.installation !== "") {
     writeMarkdown += `
   
   ## Installation
   
-  *Steps required to install project and how to get the development environment running:*
+  *Steps required to install project:*
   
   ${responses.installation}`;
   }
@@ -43,19 +93,18 @@ function generateMarkdown(responses) {
   
   ## Usage 
   
-  *Instructions and examples for use:*
+  *Instructions on how to use this project:*
   
   ${responses.usage}`;
   }
 
-  if (responses.contributing !== "") {
+  if (responses.contribution !== "") {
     `
+  ## Contribution
   
-  ## Contributing
+  *If you would like to contribute it, please follow these guidelines:*
   
-  *If you would like to contribute it, you can follow these guidelines for how to do so.*
-  
-  ${responses.contributing}`;
+  ${responses.contribution}`;
   }
 
   if (responses.tests !== "") {
@@ -68,6 +117,16 @@ function generateMarkdown(responses) {
   ${responses.tests}`;
   }
 
+  if (responses.screenshots !== "") {
+    writeMarkdown += `
+  
+  ## Screenshots
+  
+  *Images of this project:*
+  
+  ${responses.screenshots}`;
+  }
+
   writeMarkdown += `
   
   ## License
@@ -75,9 +134,7 @@ function generateMarkdown(responses) {
   ${responses.license}
   `;
 
-  return table;
-
-  return writeMarkdown;
+  return table + writeMarkdown;
 }
 
 module.exports = generateMarkdown;
