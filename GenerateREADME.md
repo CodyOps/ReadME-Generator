@@ -1,26 +1,7 @@
 ## Table of Contents
   * [Username](#username)
-  **[Repository](#repository)**
-  **[Title](#title)**
-  * [Description](#description)
-  * [User Story](#story)
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Contribution](#contribution)
-  * [Tests](#tests)
-  * [Screenshots](#screenshots)
-  * [License](#license)# readme generator
-  
-  
-  ## Description
-
-  *Quick description about this project* 
-
-  this project helps the users generate a professional readme file
-  ## Table of Contents
-  * [Username](#username)
-  **[Repository](#repository)**
-  **[Title](#title)**
+  * [Repository](#repository)
+  * [Title](#title)
   * [Description](#description)
   * [User Story](#story)
   * [Installation](#installation)
@@ -29,36 +10,48 @@
   * [Tests](#tests)
   * [Screenshots](#screenshots)
   * [License](#license)
+
+  ## Project Title
+  
+   readm
+  
+  
+  ## Description
+
+  *Quick description about this project* 
+
+  readme
+  
   
   ## User Story
   
   *User Story for this Project:*
   
-  this helps to reduce time to make a readme file
+  readm
   
   ## Installation
   
   *Steps required to install project:*
   
-  use from github
+  readme
   
   ## Usage 
   
   *Instructions on how to use this project:*
   
-  download inquirer npm and axios
+  readm
   
   ## Tests
   
   *Tests for application and how to run them:*
   
-  read me file
+  readme
   
   ## Screenshots
   
   *Images of this project:*
   
-  images
+  readme
   
   ## License
 

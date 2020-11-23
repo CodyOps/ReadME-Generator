@@ -6,6 +6,7 @@ const writeFileAsync = util.promisify(fs.writeFile);
 const generateMarkdown = require("./generateMarkdown.js");
 const api = require("./api");
 
+//function to prompt the user the questions and use the inquirer npm
 const promptUser = () =>
   inquirer.prompt([
     {
@@ -70,32 +71,26 @@ const promptUser = () =>
       message: "Do you have a license for your project?",
       choices: [
         "Apache License 2.0",
+        "Artistic license 2.0",
         "Boost Software License 1.0",
+        "BSD 2-clause license",
         "GNU AGPLv3",
         "GNU GPLv3",
         "GNU LGPLv3",
+        "Microsoft Public License",
         "MIT License",
+        "Open Software License 3.0",
         "Mozilla Public License 2.0",
         "The Unlicense",
       ],
     },
   ]);
 
-function writeFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) => {
-    console.log(
-      "Success! You have successfully generated your professional README.md file!"
-    );
-  });
-}
-
+//Function to show the user their answers and generate the markdown file with their responses
 async function init() {
   try {
     const userAnswers = await promptUser();
     console.log("Your responses: ", userAnswers);
-
-    // const userGithub = await api.getUser(responses);
-    // console.log("Your GitHub: ", userGithub);
 
     console.log("Generating your README file...");
     const markdown = generateMarkdown(userAnswers);
@@ -107,4 +102,16 @@ async function init() {
   }
 }
 
+//Function to let the user know that their markdown file has been generated
+function writeToFile(fileName, data) {
+  fs.writeFile(fileName, data, (err) => {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log("Success! Your README.md file has been generated!");
+  });
+}
+
+//Calls the init function
 init();

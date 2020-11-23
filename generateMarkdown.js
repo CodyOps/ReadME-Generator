@@ -9,12 +9,12 @@ function generateMarkdown(responses) {
 
   if (responses.repository !== "") {
     table += `
-  *[Repository](#repository)`;
+  * [Repository](#repository)`;
   }
 
   if (responses.title !== "") {
     table += `
-  **[Title](#title)**`;
+  * [Title](#title)`;
   }
 
   if (responses.description !== "") {
@@ -56,7 +56,11 @@ function generateMarkdown(responses) {
   * [License](#license)`;
   }
 
-  let writeMarkdown = `# ${responses.title}
+  let writeMarkdown = `
+
+  ## Project Title
+  
+   ${responses.title}
   
   
   ## Description
@@ -65,8 +69,6 @@ function generateMarkdown(responses) {
 
   ${responses.description}
   `;
-
-  writeMarkdown += table;
 
   if (responses.story !== "") {
     writeMarkdown += `
