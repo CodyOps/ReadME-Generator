@@ -10,13 +10,24 @@ const promptUser = () =>
   inquirer.prompt([
     {
       type: "input",
+      name: "username",
+      message: "What is your GitHub username?",
+    },
+    {
+      type: "input",
+      name: "repository",
+      message: "What is your Github repository name?",
+    },
+    {
+      type: "input",
       name: "title",
       message: "What is the title of your project?",
     },
     {
       type: "input",
       name: "description",
-      message: "What is the description of your project?",
+      default: "Project Description",
+      message: "Please include a description of your project.",
     },
     {
       type: "input",
@@ -25,44 +36,27 @@ const promptUser = () =>
     },
     {
       type: "input",
-      name: "table",
-      message: "What is this list for the table of contents?",
-    },
-    {
-      type: "input",
-      name: "instructions",
-      message: "What are the installation instructions?",
+      name: "installation",
+      message:
+        "Please describe the installation steps for your project, if applicable.",
     },
     {
       type: "input",
       name: "usage",
-      message: "What is the usage information?",
+      message:
+        "Please include instructions and examples about the usage of your project, if applicable.",
     },
     {
       type: "input",
       name: "contribution",
-      message: "What are the contribution guidelines of this project?",
+      message:
+        "How can other developers contribute to you work, if applicable?",
     },
     {
       type: "input",
       name: "tests",
       message:
-        "If applicable, provide any tests written for your application and provide examples on how to run them.",
-    },
-    {
-      type: "input",
-      name: "technology",
-      message: "What were the technologies or frameworks used?",
-    },
-    {
-      type: "input",
-      name: "features",
-      message: "What are some stand out feature of this project?",
-    },
-    {
-      type: "input",
-      name: "githubpages",
-      message: "What is the url link to your GitHub Pages?",
+        "If applicable, please provide any tests written for your application.",
     },
     {
       type: "input",
@@ -84,23 +78,10 @@ const promptUser = () =>
         "The Unlicense",
       ],
     },
-    {
-      type: "input",
-      name: "github",
-      message: "What is your GitHub username?",
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "What is your email address?",
-    },
   ]);
 
 function writeFile(fileName, data) {
   fs.writeFile(fileName, data, (err) => {
-    if (err) {
-      return console.log(err);
-    }
     console.log(
       "Success! You have successfully generated your professional README.md file!"
     );
